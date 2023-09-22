@@ -1,38 +1,49 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     const progressBar = document.querySelector(".progress");
     const avatar = document.querySelector(".avatar img");
-    const avatarPensativo = document.querySelector(".avatarPensativo");
-    const avatarTriste = document.querySelector(".avatarTriste");
-
     const form = document.getElementById("gamified-form");
+
+    // Número total de campos obrigatórios no formulário
+    const totalFields = form.querySelectorAll("input[required], select[required]").length;
+
+    // Inicializa o progresso com 0%
+    let progressValue = 0;
+
+    form.addEventListener("input", function () {
+        const completedFields = form.querySelectorAll("input[required]:valid, select[required]:valid").length;
+
+        // Calcula o progresso com base no número de campos preenchidos corretamente
+        progressValue = (completedFields / totalFields) * 100;
+        progressBar.style.width = progressValue + "%";
+
+        // Lógica para mudar a expressão do avatar com base no progresso
+        if (progressValue > 0) {
+            avatar.src = "img/pensativa.png"; // Altere para a imagem neutra
+        } else {
+            avatar.src = "img/triste.png"; // Altere para a imagem triste
+        }
+    });
+    
+
+    
     form.addEventListener("submit", function (e) {
         e.preventDefault();
-        progressBar.style.width = "100%";
-        avatar.src = "img/feliz.png"; // Altere para o caminho da imagem feliz
 
-        // Aqui você pode adicionar código para salvar as informações do formulário
-    });
+        // Verifica se todos os campos obrigatórios estão preenchidos corretamente antes de enviar
+        const completedFields = form.querySelectorAll("input[required]:valid, select[required]:valid").length;
 
-    const inputs = form.querySelectorAll("input, select");
-    inputs.forEach((input) => {
-        input.addEventListener("input", function () {
+        if (completedFields === totalFields) {
+            // Aqui você pode adicionar código para salvar as informações do formulário onde for necessário
 
-
-            //MUDAR ISSO
-            
-            const progressValue = (form.checkValidity()) ? 25 : 0; // 25% de progresso por campo preenchido corretamente
+            // Define o progresso como 100% e a imagem do avatar como feliz após o envio
+            progressValue = 100;
             progressBar.style.width = progressValue + "%";
+            avatar.src = "img/feliz.png"; // Altere para a imagem feliz
 
-            // Lógica para mudar a expressão do avatar
-            if (progressValue === 100) {
-                avatar.src = "img/feliz.png"; // Altere para o caminho da imagem feliz
-            } else if (progressValue > 0) {
-                avatar.src = "img/pensativa.png"; // Altere para o caminho da imagem neutra
-            } else {
-                avatar.src = "img/triste.png"; // Altere para o caminho da imagem triste
-            }
-
-        });
+            // Você pode adicionar mais lógica aqui, se necessário
+        } else {
+            // Caso algum campo esteja inválido, você pode adicionar um feedback ao usuário aqui
+            alert("Por favor, preencha todos os campos obrigatórios corretamente.");
+        }
     });
 });

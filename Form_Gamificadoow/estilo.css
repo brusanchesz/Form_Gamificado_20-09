@@ -32,25 +32,13 @@ body {
 }
 
 .avatar img {
-    width: 50px;
-    height: 100px;
+    width: 100px;
+    height: 200px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
-.avatarPensativo {
-    width: 50px;
-    height: 100px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
 
-.avatarTriste {
-    width: 50px;
-    height: 100px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
 
 .titulo{
     text-align: center;
