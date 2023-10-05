@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="estilo.css">
+    <script src="script.js" defer></script>
+
+    <title>Formulário Gamificado</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="avatar">
+            <img src="img/feliz.png" alt="Avatar">
+        </div>
+    
+      
+    
+            <label>Celular/WhatsApp:</label>
+            <input type="number"/><br><br>
+    
+            <label>Telefone:</label>
+            <input type="number"/><br><br>
+    
+            <label>E-mail:</label>
+            <input type="email"/><br><br>
+    
+            <label>CPF:</label>
+            <input type="number"/><br><br>
+    
+            <label>RG:</label>
+            <input type="number"/><br><br>
+        
+            
+            <a href="page3.html"> <button type="button" >Avançar </button></a>
+        </form>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const progressBar = document.querySelector(".progress");
+    const avatar = document.querySelector(".avatar img");
+    const form = document.getElementById("gamified-form");
+
+    // Número total de campos obrigatórios no formulário
+    const totalFields = form.querySelectorAll("input[required], select[required]").length;
+
+    // Inicializa o progresso com 0%
+    let progressValue = 25;
+    avatar.src = "img/triste.png";
+
+
+    // ALTERAR ESSA PARTEEEE
+    // INICIAR VARIAVEL COM 5 COMPLETEDFIELDS, E DEPOIS 10 E DEPOIS COM 15 QUE É O FINAL 
+    //
+
+    form.addEventListener("input", function () {
+        const completedFields = form.querySelectorAll("input[required]:valid, select[required]:valid").length;
+
+        // Calcula o progresso com base no número de campos preenchidos corretamente
+        progressValue = (completedFields / 15) * 25;
+        progressBar.style.width = progressValue + "%";
+
+
+    });
+
+});
+
+
+
+</script>
+</html>

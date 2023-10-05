@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="estilo.css">
+    <script src="script.js" defer></script>
+
+    <title>Formulario Gamificado</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="avatar">
+            <img src="img/feliz.png" alt="Avatar">
+        </div>
+
+        <label for="civil">Estado Cívil:</label>
+        <select>
+            <option> </option>
+            <option>Solteiro(o)</option>
+            <option>Casado(a)</option>
+            <option>Divorciado(a)</option>
+            <option>Prefiro não responder</option>
+        </select><br><br>
+
+        <label>Endereço:</label>
+        <input type="text" /><br><br>
+
+        <label>CEP:</label>
+        <input type="number" /><br><br>
+
+        <label>Você é de qual geração?</label><br><br>
+        <input type="radio" name="geracao" value="classico" />Classico
+        <input type="radio" name="geracao" value="nutella" />Nutella<br><br>
+
+        <label>Você é programador?</label><br><br>
+        <input type="radio" name="programa" value="sim" />Sim
+        <input type="radio" name="programa" value="nao" />Não<br><br>
+
+
+        <a href="page4.html"> <button type="button" >Avançar </button></a>
+
+        </form>
+
+    </div>
+
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const progressBar = document.querySelector(".progress");
+    const avatar = document.querySelector(".avatar img");
+    const form = document.getElementById("gamified-form");
+
+    // Número total de campos obrigatórios no formulário
+    const totalFields = form.querySelectorAll("input[required], select[required]").length;
+
+    // Inicializa o progresso com 0%
+    let progressValue = 0;
+    avatar.src = "img/pensativa.png";
+
+    form.addEventListener("input", function () {
+        const completedFields = form.querySelectorAll("input[required]:valid, select[required]:valid").length;
+
+        // Calcula o progresso com base no número de campos preenchidos corretamente
+        progressValue = (completedFields / 15) * 25;
+        progressBar.style.width = progressValue + "%";
+
+    
+    });
+    
+});
+
+</script>
+
+</html>

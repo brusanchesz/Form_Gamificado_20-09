@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="estilo.css">
+    <script src="script.js" defer></script>
+
+    <title>Formulario Gamificado</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="avatar">
+            <img src="img/feliz.png" alt="Avatar">
+
+        </div>
+        </div>
+<!--FINALIZAR COM GIF OU SEI LA FALANDO PARABENS E COM A BARRA DE PROGRESSO COMPLETA-->
+
+</body>
+
+<script>
+    
+    // COLOCAR APENAS NA PAGINA 4 POIS SO LA TEM O SALVAR
+    // LEMBRAR DE SALVAR TODAS AS INFORMAÇÕES NO LOCAL STORAGE 
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Verifica se todos os campos obrigatórios estão preenchidos corretamente antes de enviar
+        const completedFields = form.querySelectorAll("input[required]:valid, select[required]:valid").length;
+
+        if (completedFields === totalFields) {
+            // Aqui você pode adicionar código para salvar as informações do formulário onde for necessário
+
+            // Define o progresso como 100% e a imagem do avatar como feliz após o envio
+            progressValue = 100;
+            progressBar.style.width = progressValue + "%";
+            avatar.src = "img/feliz.png"; // Altere para a imagem feliz
+
+            // Você pode adicionar mais lógica aqui, se necessário
+        } else {
+            // Caso algum campo esteja inválido, você pode adicionar um feedback ao usuário aqui
+            alert("Por favor, preencha todos os campos obrigatórios corretamente.");
+        }
+
+    });
+
+    //ELEMENTOR - SITE PARA CRIAR ANIMAÇÕES E TIRAR O CODIGO
+    
+</script>
+</html>

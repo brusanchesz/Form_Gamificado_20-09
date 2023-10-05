@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="estilo.css">
-    <script src="script.js" defer></script>
 
     <title>Formulário Gamificado</title>
 </head>
@@ -42,8 +41,8 @@
                 <option>Masculino</option>
                 <option>Prefiro não responder</option>
             </select><br><br>
-    
-         <!--   <label for="genero">Gênero:</label>
+
+            <label for="genero">Gênero:</label>
             <select id="genero">
                 <option>          </option>
                 <option>Heterosexual</option>
@@ -57,42 +56,41 @@
                 <option>Prefiro não responder</option>
             </select><br><br>
     
-            <label>Celular/WhatsApp:</label>
-            <input type="number"/><br><br>
-    
-            <label>Telefone:</label>
-            <input type="number"/><br><br>
-    
-            <label>E-mail:</label>
-            <input type="email"/><br><br>
-    
-            <label>CPF:</label>
-            <input type="number"/><br><br>
-    
-            <label>RG:</label>
-            <input type="number"/><br><br>
-    
-            <label for="civil">Estado Cívil:</label>
-            <select>
-                <option>            </option>
-                <option>Solteiro(o)</option>
-                <option>Casado(a)</option>
-                <option>Divorciado(a)</option>
-                <option>Prefiro não responder</option>
-            </select><br><br>
-    
-            <label>Endereço:</label>
-            <input type="text"/><br><br>
-    
-            <label>CEP:</label>
-            <input type="number"/><br><br>
-    
-            <label>Você é de qual geração?</label><br><br>
-            <input type="radio" name="geracao" value="classico"/>Classico
-            <input type="radio" name="geracao" value="nutella"/>Nutella<br><br>-->
+
+            <a href="page2.html"> <button type="button" >Avançar </button></a>
             
-            <button type="submit">Salvar</button>
         </form>
-    </div>
+   
+</div>
 </body>
+<script>
+    
+    document.addEventListener("DOMContentLoaded", function () {
+    const progressBar = document.querySelector(".progress");
+    const avatar = document.querySelector(".avatar img");
+    const form = document.getElementById("gamified-form");
+
+    // Número total de campos obrigatórios no formulário
+    const totalFields = form.querySelectorAll("input[required], select[required]").length;
+
+    // Inicializa o progresso com 0%
+    let progressValue = 0;
+    avatar.src = "img/brava.png";
+
+    form.addEventListener("input", function () {
+        const completedFields = form.querySelectorAll("input[required]:valid, select[required]:valid").length;
+
+        // Calcula o progresso com base no número de campos preenchidos corretamente
+        progressValue = (completedFields / 15) * 25;
+        progressBar.style.width = progressValue + "%";
+
+        // Lógica para mudar a expressão do avatar com base no progresso
+        if (progressValue > 0 && progressValue < 100) {
+            avatar.src = "img/pensativa.png"; // Altere para a imagem neutra
+        } 
+    });
+    
+});
+
+</script>
 </html>
